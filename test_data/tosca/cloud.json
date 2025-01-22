@@ -1,0 +1,108 @@
+{
+  "total": 18,
+  "items": [
+    {
+      "id": "06631a9f-56c6-4005-8ead-db8a9df76bc9",
+      "playlistId": "43355acb-991b-46cf-a101-a0a0b79a77cf",
+      "playlistName": "sample playlist",
+      "private": false,
+      "createdAt": "2024-12-20T13:49:58.727Z",
+      "updatedAt": "2024-12-20T13:50:06.932Z",
+      "createdBy": "Tricentis_Cloud_API",
+      "state": "succeeded"
+    },
+    {
+      "id": "0c2c3f88-87a6-4a42-9a77-9c42054ec964",
+      "playlistId": "43355acb-991b-46cf-a101-a0a0b79a77cf",
+      "playlistName": "sample playlist",
+      "private": false,
+      "createdAt": "2024-12-20T13:46:48.765Z",
+      "updatedAt": "2024-12-20T13:46:52.975Z",
+      "createdBy": "Tricentis_Cloud_API",
+      "state": "failed"
+    },
+    {
+      "id": "1ea8c84f-4309-4a50-91b3-7e0a58037107",
+      "playlistId": "43355acb-991b-46cf-a101-a0a0b79a77cf",
+      "playlistName": "sample playlist",
+      "private": false,
+      "createdAt": "2024-12-18T08:18:34.108Z",
+      "updatedAt": "2024-12-18T08:18:39.441Z",
+      "createdBy": "Tricentis_Cloud_API",
+      "state": "succeeded"
+    },
+    {
+      "id": "23ae6b90-791b-4f18-b0a9-19c279e938e8",
+      "playlistId": "43355acb-991b-46cf-a101-a0a0b79a77cf",
+      "playlistName": "sample playlist",
+      "private": false,
+      "createdAt": "2024-12-20T13:21:22.377Z",
+      "updatedAt": "2024-12-20T13:21:25.432Z",
+      "createdBy": "Tricentis_Cloud_API",
+      "state": "failed"
+    },
+    {
+      "id": "3e12d251-0c1c-4a8e-8085-ab4176635c55",
+      "playlistId": "43355acb-991b-46cf-a101-a0a0b79a77cf",
+      "playlistName": "sample playlist",
+      "private": false,
+      "createdAt": "2024-12-20T13:10:36.383Z",
+      "updatedAt": "2024-12-20T13:10:39.789Z",
+      "createdBy": "Tricentis_Cloud_API",
+      "state": "failed"
+    },
+    {
+      "id": "4a8d5e94-47fb-40b0-abd4-cce05617b4d8",
+      "playlistId": "43355acb-991b-46cf-a101-a0a0b79a77cf",
+      "playlistName": "sample playlist",
+      "private": false,
+      "createdAt": "2024-12-20T13:46:50.987Z",
+      "updatedAt": "2024-12-20T13:46:56.864Z",
+      "createdBy": "Tricentis_Cloud_API",
+      "state": "failed"
+    },
+    {
+      "id": "4f1412a8-97da-4974-8b8f-cba8a8d74501",
+      "playlistId": "43355acb-991b-46cf-a101-a0a0b79a77cf",
+      "playlistName": "sample playlist",
+      "private": false,
+      "createdAt": "2024-12-18T08:24:01.503Z",
+      "updatedAt": "2024-12-18T08:24:09.753Z",
+      "createdBy": "Tricentis_Cloud_API",
+      "state": "succeeded"
+    },
+    {
+      "id": "58d177fe-762a-42f5-a10c-553d68a79377",
+      "playlistId": "43355acb-991b-46cf-a101-a0a0b79a77cf",
+      "playlistName": "sample playlist",
+      "private": false,
+      "createdAt": "2024-12-20T13:06:24.372Z",
+      "updatedAt": "2024-12-20T13:06:27.717Z",
+      "createdBy": "00umqbeu90jI5cbcT697",
+      "state": "succeeded"
+    },
+    {
+      "id": "5e884991-7884-44eb-a93f-85a414c495e0",
+      "playlistId": "43355acb-991b-46cf-a101-a0a0b79a77cf",
+      "playlistName": "sample playlist",
+      "private": false,
+      "createdAt": "2024-12-20T15:23:23.979Z",
+      "updatedAt": "2024-12-20T15:23:28.438Z",
+      "createdBy": "Tricentis_Cloud_API",
+      "state": "succeeded"
+    },
+    {
+      "id": "6e12ba1d-1789-49c1-8c09-62cc48318655",
+      "playlistId": "43355acb-991b-46cf-a101-a0a0b79a77cf",
+      "playlistName": "sample playlist",
+      "private": false,
+      "createdAt": "2024-12-20T13:05:12.056Z",
+      "updatedAt": "2024-12-20T13:05:51.155Z",
+      "createdBy": "00umqbeu90jI5cbcT697",
+      "state": "failed"
+    }
+  ],
+  "previousPageToken": null,
+  "currentPageToken": "AAAABXY9LBQAAZvqvXe7AwQAAAAAAAiLHwAAAAU=",
+  "nextPageToken": "AAAABavXT1kAENJzyKxbAwQAAAAAAAiLHwAAAAU="
+}
