@@ -1,0 +1,164 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+name: trigger-publish-test-results-action
+kind: workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  Junit-Test:
+    steps:
+      - name: checkout-source-code
+        uses: cloudbees-io/checkout@v1
+
+      - name: Junit
+        uses: cloudbees-io/publish-test-results@v1
+        with:
+          test-type: junit
+          folder-name: ${{ cloudbees.workspace }}/test_data/junit/report*.xml
+    
+  TestNG-Test:
+    steps:        
+      - name: checkout-source-code
+        uses: cloudbees-io/checkout@v1
+      
+      - name: TestNG
+        uses: cloudbees-io/publish-test-results@v1
+        with:
+          test-type: testng
+          folder-name: ${{ cloudbees.workspace }}/test_data/testng/report.xml
+  
+  GO-Test:
+    steps:        
+      - name: checkout-source-code
+        uses: cloudbees-io/checkout@v1
+      
+      - name: GO-Test
+        uses: cloudbees-io/publish-test-results@v1
+        with:
+          test-type: go
+          folder-name: ${{ cloudbees.workspace }}/test_data/go/report2.xml
+        
+  ProdPerfect-Test:
+    steps:        
+      - name: checkout-source-code
+        uses: cloudbees-io/checkout@v1
+  
+      - name: ProdPerfect-Test
+        uses: cloudbees-io/publish-test-results@v1
+        with:
+          test-type: prodperfect
+          folder-name: ${{ cloudbees.workspace }}/test_data/prod_perfect/*.json
+
+  MStest-Test:
+    steps:        
+      - name: checkout-source-code
+        uses: cloudbees-io/checkout@v1
+      
+      - name: MStest-Test
+        uses: cloudbees-io/publish-test-results@v1
+        with:
+          test-type: mstest
+          folder-name: ${{ cloudbees.workspace }}/test_data/mstest/*.trx
+
+
+  Tosca-Test:
+    steps:        
+      - name: checkout-source-code
+        uses: cloudbees-io/checkout@v1
+      
+      - name: Tosca-Test
+        uses: cloudbees-io/publish-test-results@v1
+        with:
+          test-type: tosca
+          folder-name: ${{ cloudbees.workspace }}/test_data/tosca/report.xml
+
+
+  Selenium-Test:
+    steps:        
+      - name: checkout-source-code
+        uses: cloudbees-io/checkout@v1
+      
+      - name: Selenium-Test
+        uses: cloudbees-io/publish-test-results@v1
+        with:
+          test-type: selenium
+          folder-name: ${{ cloudbees.workspace }}/test_data/selenium/reports/selenium_ide_runner_jest_withfailure.json
+
+  Jmeter-Test:
+    steps:        
+      - name: checkout-source-code
+        uses: cloudbees-io/checkout@v1
+      
+      - name: Jmeter-Test
+        uses: cloudbees-io/publish-test-results@v1
+        with:
+          test-type: jmeter
+          folder-name: ${{ cloudbees.workspace }}/test_data/jmeter/jxmltestreport.jtl
+          
+  Jest-Test:  
+    steps:        
+      - name: checkout-source-code
+        uses: cloudbees-io/checkout@v1
+      
+      - name: Jest-Test
+        uses: cloudbees-io/publish-test-results@v1
+        with:
+          test-type: jest
+          folder-name: ${{ cloudbees.workspace }}/test_data/jest/nextgen-ui/jest-results.json
+
+
+  Playwright-Test:
+    steps:
+      - name: checkout-source-code
+        uses: cloudbees-io/checkout@v1
+
+      - name: PlayWright-Test
+        uses: cloudbees-io/publish-test-results@v1
+        with:
+          test-type: playwright
+          folder-name: ${{ cloudbees.workspace }}/test_data/playwright/results_failed.json
+
+      - name: configure aws credentials
+        uses: cloudbees-io/configure-aws-credentials@v1
+        with:
+          aws-region: us-east-1
+          aws-access-key-id: ${{ secrets.CB_ACTIONS_TEST_AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.CB_ACTIONS_TEST_AWS_SECRET_KEY }}
+
+      - id: compress-and-archive-test-evidences
+        name: compress and archive test evidences
+        uses: docker://golang:1.20-alpine
+        shell: sh
+        run: |
+          mkdir -p ${{ cloudbees.workspace }}/test-data/playwright/test-results
+          tar -czf ${{ cloudbees.workspace }}/test-data/playwright/test-results.tar.gz -C ${{ cloudbees.workspace }}/test-data/playwright/test-results .
+
+      - name: s3 upload test evidences archive
+        uses: cloudbees-io/s3-upload-object@v1
+        with:
+          file-path: ${{ cloudbees.workspace }}/test-data/playwright/test-results.tar.gz
+          bucket-name: cloudbees-saas-preprod-trufflehog-test-actions-logs
+          s3-path: s3-folder/${{ cloudbees.run_id }}.tar.gz
+          send-artifact-info: "true"
+
+  # trigger-tosca-action:
+  #   steps:
+  #     - name: Trigger tosca actions test
+  #       uses: calculi-corp/template-external-actions@tosca-actions
+  #       with:
+  #         tosca_cloud_base_url: "https://dk-company5.my.tricentis.com/"
+  #         tosca_auth_url: "https://dk-company5-559.okta.com/oauth2/default/v1/token"
+  #         client_id: ${{ secrets.TOSCA_CLIENT_ID }}
+  #         client_secret: ${{ secrets.TOSCA_CLIENT_SECRET }}
+  #         playlist_name: "sample playlist2"
+  #         workspace: "default"
+  #         filename: ${{ cloudbees.run_id }}
+      
+  #     - name: Publish Tosca Cloud Test results
+  #       uses: calculi-corp/template-external-actions/publish@tosca-actions
+  #       with:
+  #         test-type: tosca
+  #         folder-name: /cloudbees/home/tosca-cloud/${{ cloudbees.run_id }}.json  
