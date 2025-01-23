@@ -120,3 +120,5 @@ jobs:
         with:
           test-type: playwright
           folder-name: ${{ cloudbees.workspace }}/test_data/playwright/results_failed.json
+
+          
