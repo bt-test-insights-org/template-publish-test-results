@@ -2,9 +2,6 @@ apiVersion: automation.cloudbees.io/v1alpha1
 name: trigger-publish-test-results-action
 kind: workflow
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
   pull_request:
     branches:
